@@ -17,7 +17,7 @@ export interface IUser {
   assignedDeliveries?: string[];
 }
 
-export interface UserLoginData {
+export interface AdminLoginData {
   email: string;
   password: string;
 }

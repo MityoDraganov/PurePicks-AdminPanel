@@ -1,9 +1,9 @@
-import { IMarketplaceSettingsDto, IUser } from "../Interfaces/User.interface";
+import { Eye, EyeOff } from "lucide-react";
 
+import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { ProductMutableData } from "../Interfaces/Product.interface";
-import { cn } from "../lib/utils";
+import { useState } from "react";
 
 export const InputGroup = ({
   label,
@@ -14,7 +14,7 @@ export const InputGroup = ({
   type,
   className,
   multiple,
-  absoluteLabel
+  absoluteLabel,
 }: {
   label: string;
   placeHolder: string | undefined;
@@ -26,18 +26,35 @@ export const InputGroup = ({
   multiple?: boolean;
   absoluteLabel?: boolean;
 }) => {
+  const [isPasswordRevealed, setIsPasswordRevealed] = useState<boolean>(false);
   return (
     <div className={`flex flex-col gap-1 relative ${className}`}>
-      <Label className={`${absoluteLabel ? "absolute -top-4" : ""}`}>{label}</Label>
-      <Input
-        placeholder={placeHolder}
-        value={value}
-        onChange={onChange}
-        className={`${!value ? "bg-muted" : ""} w-full`}
-        id={id}
-        type={type || "text"}
-        multiple
-      />
+      <Label className={`${absoluteLabel ? "absolute -top-4" : ""}`}>
+        {label}
+      </Label>
+      <div className="relative">
+        <Input
+          placeholder={placeHolder}
+          value={value}
+          onChange={onChange}
+          className={`${!value ? "bg-muted" : ""} w-full ${type === "password" && "pr-20"}`}
+          id={id}
+          type={isPasswordRevealed ? "text" : type || "text"}
+          multiple
+        />
+
+        {type === "password" && (
+          <Button
+            size="icon"
+            variant="outline"
+            className="absolute top-0 right-0"
+            onClick={() => setIsPasswordRevealed(!isPasswordRevealed)}
+            type="button"
+          >
+            {isPasswordRevealed ? <EyeOff /> : <Eye />}
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
