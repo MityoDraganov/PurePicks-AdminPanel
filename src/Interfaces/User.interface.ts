@@ -7,7 +7,7 @@ export interface IUser {
   email: string;
   password: string;
   rePassword?: string;
-  type: 'buyer' | 'farmer' | 'deliverer' | 'admin';
+  type: ('buyer' | 'farmer' | 'deliverer' | 'admin')[];
   products?: IProduct[];
   VerifiedStatus?: 'Verified' | 'Pending' | 'Non-verified';
   marketplaceSettings?: IMarketplaceSettings;
@@ -27,7 +27,7 @@ export interface UserRegisterData {
   email: string;
   password: string;
   rePassword: string;
-  type: string;
+  type: string[];
 }
 
 export interface IUserDto {
@@ -37,7 +37,7 @@ export interface IUserDto {
   token: string;
   password?: string;
   rePassword?: string;
-  type: 'buyer' | 'farmer' | 'deliverer' | 'admin';
+   type: ('buyer' | 'farmer' | 'deliverer' | 'admin')[];
 
   
   VerifiedStatus?: 'Verified' | 'Pending' | 'Non-verified';

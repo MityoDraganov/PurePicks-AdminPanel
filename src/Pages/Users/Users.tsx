@@ -30,6 +30,7 @@ export const Users = () => {
             <TableHead>Username</TableHead>
 
             <TableHead>Email</TableHead>
+            <TableHead>Role type</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>

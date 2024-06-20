@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { Login } from "./Pages/Login/Login";
 import { SideBar } from "./components/SideBar";
 import { Toaster } from "./components/ui/toaster";
@@ -20,6 +21,8 @@ function App() {
             <Route path="login" element={<Login />} />
 
             <Route path="users" element={<Users />} />
+
+            <Route path="dashboard" element={<Dashboard />} />
           </Routes>
         </div>
       </AuthProvider>
